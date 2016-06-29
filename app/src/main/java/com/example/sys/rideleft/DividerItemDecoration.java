@@ -24,6 +24,10 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration{
         mDivider = resources.getDrawable(R.drawable.line_divider);
     }
 
+
+
+
+
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         int left = parent.getPaddingLeft()+parent.getWidth()/18;
         int right = parent.getWidth() - parent.getPaddingRight();
