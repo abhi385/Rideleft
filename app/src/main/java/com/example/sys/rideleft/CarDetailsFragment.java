@@ -20,7 +20,6 @@ import java.util.ArrayList;
  */
 public class CarDetailsFragment extends Fragment
 {
-
     TextView base_fare;
     private static ViewPager mPager;
     private static int currentPage = 0;
@@ -32,8 +31,6 @@ public class CarDetailsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View v = inflater.inflate(R.layout.car_details,container,false);
-       // init();
-
         base_fare=(TextView)v.findViewById(R.id.base_fare);
         base_fare.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
         mPager = (ViewPager) v.findViewById(R.id.pager);
@@ -45,7 +42,6 @@ public class CarDetailsFragment extends Fragment
 
         final float density = getResources().getDisplayMetrics().density;
 
-//Set circle indicator radius
         indicator.setRadius(5 * density);
 
         NUM_PAGES =IMAGES.length;
@@ -54,50 +50,16 @@ public class CarDetailsFragment extends Fragment
             @Override
             public void onPageSelected(int position) {
                 currentPage = position;
-
             }
 
             @Override
             public void onPageScrolled(int pos, float arg1, int arg2) {
-
             }
 
             @Override
             public void onPageScrollStateChanged(int pos) {
-
             }
         });
-
         return v;
     }
-
-/*
-    private void init()
-    {
-
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-        // Pager listener over indicator
-
-
-    }
-*/
-
-
 }
