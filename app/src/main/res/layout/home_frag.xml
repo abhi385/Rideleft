@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/maps_Location"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:padding="5dp"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <EditText
+                android:drawableLeft="@drawable/blue"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Enter Sourece Location"
+                android:layout_gravity="center"
+                android:id="@+id/source"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp" />
+
+            <Button
+                android:id="@+id/cross"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_margin="8dp"
+                android:background="@drawable/cross" />
+        </FrameLayout>
+        <FrameLayout
+            android:padding="5dp"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        <EditText
+            android:drawableLeft="@drawable/red"
+
+            android:background="@drawable/rounded_edittext"
+            android:hint="Enter Destination Location"
+            android:layout_gravity="center"
+            android:id="@+id/destination"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bluemarker"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <HorizontalScrollView
+
+        android:background="@android:color/holo_blue_light"
+        android:id="@+id/xml_full_img_hor_below_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/images"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal" >
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</RelativeLayout>

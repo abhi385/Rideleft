@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\Rideleft\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "D:\\Rideleft\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "D:\\Test\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "D:\\Test\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "D:\\Rideleft\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "D:\\Rideleft\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "D:\\Test\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "D:\\Test\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "I:\\Android Projects\\Rideleft\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "I:\\Android Projects\\Rideleft\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "I:\\Android Projects\\Rideleft\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "I:\\Android Projects\\Rideleft\\library\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
+    }
+]
