@@ -2,9 +2,11 @@ package com.example.sys.rideleft;
 
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,10 +15,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
-import com.example.sys.leftriding.R;
+import com.example.sys.rideleft.Adapter.EventListRecylerView;
+import com.example.sys.rideleft.Fragment.CarDetailsFragment;
+import com.example.sys.rideleft.Fragment.HomeFragment;
+import com.example.sys.rideleft.Fragment.ListOfDriverFragment;
+import com.example.sys.rideleft.Fragment.RideDetailsFragment;
+import com.example.sys.rideleft.Other.DividerItemDecoration;
 
 
 public class MainActivity extends ActionBarActivity
@@ -45,29 +54,52 @@ public class MainActivity extends ActionBarActivity
     RecyclerView mRecyclerView;                           // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View
     RecyclerView.LayoutManager mLayoutManager;            // Declaring Layout Manager as a linear layout manager
-    DrawerLayout Drawer;                                  // Declaring DrawerLayout
-
-    ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
-
-
-
+    static  DrawerLayout Drawer;                                  // Declaring DrawerLayout
+    static  ActionBarDrawerToggle mDrawerToggle;                  // Declaring Action Bar Drawer Toggle
+    TextView mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+       /*  getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar = (Toolbar)findViewById(R.id.tool_bar);
+
+      //  toolbar.getBackground().setAlpha(0);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home");
 
+
+      /*  toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+                onBackPressed();
+            }
+        });*/
+        //setHasOptionsMenu(true);
+        //toolbar.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+/*        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+
+            }
+        });*/
+
+        mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        mTitle.setText("Home");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+      //  getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //getSupportActionBar().setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
-
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
-
+        mAdapter = new EventListRecylerView(TITLES,ICONS,NAME,PROFILE);       // Creating the Adapter of EventListRecylerView class(which we are going to see in a bit)
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getResources()));
         // Setting the adapter to RecyclerView
@@ -80,7 +112,7 @@ public class MainActivity extends ActionBarActivity
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
 
         // Drawer object Assigned to the view
-        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer)
+        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,R.string.openDrawer,R.string.closeDrawer)
         {
 
             @Override
@@ -90,17 +122,46 @@ public class MainActivity extends ActionBarActivity
             }
 
             @Override
-            public void onDrawerClosed(View drawerView) {
+            public void onDrawerClosed(View drawerView)
+            {
                 super.onDrawerClosed(drawerView);
             }
          };
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerToggle.syncState();
+        Drawer.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+       /* toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getSupportFragmentManager().getBackStackEntryCount() > 0){
+                    getSupportFragmentManager().popBackStack();
+                }else {
+                }
+            }
+        });*/
+       /* mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // event when click home button
+                  //  finish();
 
-
+                System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLL");
+           //     popStackIfNeeded();
+            }
+        });*/
+      /*  Drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        mDrawerToggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);*/
+        /**/
+     //   toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.back));
 
         final GestureDetector mGestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
-            @Override public boolean onSingleTapUp(MotionEvent e) {
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
 
@@ -109,13 +170,15 @@ public class MainActivity extends ActionBarActivity
 
         mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent)
+            {
                 View child = recyclerView.findChildViewUnder(motionEvent.getX(),motionEvent.getY());
 
 
 
-                if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
-                    Drawer.closeDrawers();
+                if(child!=null && mGestureDetector.onTouchEvent(motionEvent))
+                {
+                            Drawer.closeDrawers();
 
                  //   Toast.makeText(MainActivity.this,"The Item Clicked is: "+recyclerView.getChildPosition(child),Toast.LENGTH_SHORT).show();
                      displayView(recyclerView.getChildPosition(child));
@@ -141,17 +204,86 @@ public class MainActivity extends ActionBarActivity
         displayView(1);
 
 
-        Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
+
+     /*   getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);*/
+
+
+
+      //  getSupportActionBar().beginTransaction().add(R.id.frame_container,fragment, "First").addToBackStack(null).commit();
+       // getFragmentManager().addOnBackStackChangedListener(getBaseContext());
+
+
+
+        /*getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                        public void onBackStackChanged()
+                        {
+                            System.out.println("SSSSSSSSSSSSSSSSSSSSSSS");
+                        }
+                });*/
+        // Finally we set the drawer toggle sync State
 
     }
 
 
+    public static void chk()
+    {
+        Drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        */
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+      //  mDrawerToggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+    /*@Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+    }*/
+
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+         super.onPostCreate(savedInstanceState);
+         mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+          super.onConfigurationChanged(newConfig);
+          mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*@Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+    */
+
     private void displayView(int position)
     {
-        // update the main content by replacing fragments
         Fragment fragment = null;
-        switch (position) {
+        switch (position)
+        {
             case 1:
                 fragment = new HomeFragment();
                 break;
@@ -162,7 +294,7 @@ public class MainActivity extends ActionBarActivity
                 fragment = new CarDetailsFragment();
                 break;
             case 4:
-                fragment = new ListOfDriverFragment();
+                fragment = new RideDetailsFragment();
                 break;
             case 5:
                 fragment = new ListOfDriverFragment();
@@ -177,15 +309,13 @@ public class MainActivity extends ActionBarActivity
                 break;
         }
 
-        if (fragment != null) {
-       FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_trans, fragment).commit();
-            // update selected item and title, then close the drawer
-           // mDrawerList.setItemChecked(position, true);
-            //mDrawerList.setSelection(position);
-           // setTitle(navMenuTitles[position]);
-            toolbar.setTitle(TITLES[position-1]);
+        if(fragment != null)
+        {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            //transaction.addToBackStack(null);
+            transaction.replace(R.id.fragment_trans, fragment).commit();
+            mTitle.setText(TITLES[position-1]);
             Drawer.closeDrawer(mRecyclerView);
         } else {
             // error in creating fragment

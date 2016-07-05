@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    >
+
+    android:layout_height="match_parent">
 
     <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+
         android:id="@+id/maps_Location"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <LinearLayout
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:orientation="vertical"

@@ -1,14 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
     <ScrollView
+        android:layout_above="@+id/accept"
 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
          <LinearLayout
-            android:padding="16dp"
+
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
@@ -416,13 +417,6 @@
         </LinearLayout>
 
 
-        <Button
-            android:text="Accept"
-            android:textColor="@android:color/white"
-            android:background="@android:color/holo_blue_light"
-            android:layout_margin="20dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
 
       <!--  <TextView
             android:text="LLLLLLLLLLLL"
@@ -431,4 +425,16 @@
 
        </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+
+    <Button
+        android:id="@+id/accept"
+        android:text="Accept"
+
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_blue_light"
+        android:layout_margin="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

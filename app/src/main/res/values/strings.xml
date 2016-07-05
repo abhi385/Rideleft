@@ -4,4 +4,5 @@
     <string name="terms">Terms &amp; Condition</string>
     <string name="openDrawer">Navigation View Closed</string>
     <string name="title_activity_maps">Map</string>
+    <string name="Rs">\u20B9</string>
 </resources>
